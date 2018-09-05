@@ -5,7 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+/**
+ * 压缩路径
+ * @author Lang
+ *
+ */
 public class QuickUnionZip extends AbsUnionFind{
 	
 	//D:\OneDriver\OneDrive\algs4-data\tinyUF.txt
