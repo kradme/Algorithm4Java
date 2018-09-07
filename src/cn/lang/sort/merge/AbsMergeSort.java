@@ -9,7 +9,7 @@ import cn.lang.sort.AbsSort;
  */
 public abstract class AbsMergeSort extends AbsSort{
 	
-	protected static Comparable<?>[] aux;
+	 static Comparable<?>[] aux;
 
 	/**
 	 * 原地归并
@@ -23,14 +23,14 @@ public abstract class AbsMergeSort extends AbsSort{
 		
 		for(int i=low;i<=high;i++) {
 			aux[i]=aa[i];
-			aa[i]=null;
+//			aa[i]=null;
 		}
 		int x=low,y=mid+1;
 		for(int i=low;i<=high;i++) {
-			if(y>high) {
-				aa[i]=aux[x++];
-			}else if(x>=mid+1) {
+			if(x>=mid+1) {
 				aa[i]=aux[y++];
+			}else if(y>high) {
+				aa[i]=aux[x++];
 			}else if(less(aux[x],aux[y])) {
 				aa[i]=aux[x++];
 			}else {
