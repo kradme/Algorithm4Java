@@ -1,8 +1,13 @@
 package cn.lang.sort.quick;
 
 import cn.lang.sort.AbsSort;
+import cn.lang.sort.InsertionSort;
 
 public class QuickSort extends AbsSort{
+	
+	private final static int M = 5;
+	
+	InsertionSort insertionSort = new InsertionSort();
 
 	@Override
 	public void sort(Comparable<?>[] comparables) {
@@ -10,7 +15,12 @@ public class QuickSort extends AbsSort{
 	}
 	
 	public void sort(Comparable<?>[] aa, int low, int high) {
-		if(low>=high) {
+//		if(low>=high ) {
+//			return;
+//		}
+		//小数组用插入排序比快排更快
+		if(low+M>=high) {
+			InsertionSort.sort(aa,low,high);
 			return;
 		}
 		int base = partition(aa, low, high);
@@ -41,10 +51,11 @@ public class QuickSort extends AbsSort{
 	}
 	
 	public static void main(String[] args) {
-		Integer[] aa = new Integer[] {3,6,8,2,7,1};
+		Integer[] aa = random2Sort(1000);
 		QuickSort sort = new QuickSort();
-		sort.sort(aa, 0, aa.length-1);
+		sort.sort(aa);
 		System.out.println(show(aa));
+		System.out.println("Is Sorted? : "+isSorted(aa));
 	}
 	
 

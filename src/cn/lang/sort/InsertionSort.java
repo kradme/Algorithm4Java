@@ -10,10 +10,10 @@ public class InsertionSort extends AbsSort {
 	public static void main(String[] args) {
 		Integer[] comparables = random2Sort(100);
 //		Comparable<?>[] comparables = readIn("data//largeW.txt");
-		AbsSort sort = new InsertionSort();
+		InsertionSort sort = new InsertionSort();
 		System.out.println("===============  排序开始    ===============");
 		long start = System.currentTimeMillis();
-		sort.sort(comparables);
+		sort.sort(comparables,0,99);
 		System.out.println("耗时："+(System.currentTimeMillis()-start)+"ms");
 		System.out.println(show(comparables));
 		System.out.println("Is Sorted? : "+isSorted(comparables));
@@ -38,6 +38,16 @@ public class InsertionSort extends AbsSort {
 // 
 //		}
 
+	}
+	
+	public static void sort(Comparable<?>[] aa, int low, int high) {
+		for(int i=low;i<=high;i++) {
+			int j;
+			for(j=i+1;j<=high && less(aa[j],aa[i]);j++) {
+				aa[j]=aa[i];
+			}
+			aa[j-1]=aa[i];
+		}
 	}
 
 }
